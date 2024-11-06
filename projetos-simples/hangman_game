@@ -1,0 +1,24 @@
+import random
+
+palavras = ['python', 'java', 'javascript', 'csharp']
+palavra_secreta = random.choice(palavras)
+letras_corretas = ['_'] * len(palavra_secreta)
+tentativas = 6
+
+print("Bem-vindo ao Jogo da Forca!")
+
+while tentativas > 0 and "_" in letras_corretas:
+    print("Palavra:", " ".join(letras_corretas))
+    tentativa = input(f"Você tem {tentativas} tentativas restantes. Digite uma letra: ").lower()
+
+    if tentativa in palavra_secreta:
+        for i in range(len(palavra_secreta)):
+            if palavra_secreta[i] == tentativa:
+                letras_corretas[i] = tentativa
+    else:
+        tentativas -= 1
+
+if "_" not in letras_corretas:
+    print(f"Parabéns! Você acertou a palavra: {palavra_secreta}")
+else:
+    print(f"Você perdeu! A palavra era: {palavra_secreta}")
